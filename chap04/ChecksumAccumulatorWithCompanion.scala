@@ -1,6 +1,3 @@
-#!/bin/sh
-exec docker run --rm --tty --interactive --volume $PWD:/app bigtruedata/scala scala "$0" "$@"
-!#
 import scala.collection.mutable
 /*
  * Just the final code for object
@@ -50,7 +47,3 @@ object ChecksumAccumulatorWithCompanion {
       cs
     }
 }
-
-// use singleton static method
-// add value to cache
-println(ChecksumAccumulatorWithCompanion.calculate("Every value is an object"))
