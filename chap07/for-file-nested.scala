@@ -17,11 +17,14 @@ def grep(pattern: String) =
     file <- filesHere
     if file.isFile
     if file.getName.endsWith(".scala")
-
     line <- fileLines(file)
-    if line.trim.matches(pattern)
-  } println(file + ": " + line.trim)
+    // optimization, store the trimmed line instead of trimming twice
+    // once for pattern and once for print
+    // this is called "mid stream assignement ina for expression
+    // trimmed is a val but no declaration required
+    trimmed = line.trim
+    if trimmed.matches(pattern)
+  } println(file + ": " + trimmed)
 
 // print all lines containing string "gcd" in .scala files
 grep(".*gcd.*")
-
