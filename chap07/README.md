@@ -1,6 +1,6 @@
 # Control structures
 Scala has only
-* for
+* for - returns value
 * try
 * match
 * if - returns value
