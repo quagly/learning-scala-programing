@@ -11,3 +11,5 @@ consider swithing to alpine based container which is much smaller
 
 tried it on a trivial script and made no different to wall clock
 try again on a larger script
+
+sample code for the book can be found [here](https://booksites.artima.com/programming_in_scala_3ed/examples/index.html)
