@@ -30,10 +30,35 @@ abstract class Element {
   override def toString = contents mkString "\n"
 }
 
-// compantion singleton for factory methods
-// a nice interface for client so they don't need to
-// know about the object hierarcy and different object types
+/* compantion singleton for factory methods
+ * a nice interface for client so they don't need to
+ * know about the object hierarcy and different object types
+ *
+ * in addition to factory method elem
+ * we can make classes private within the singleton
+ * companion class
+ */
 object Element {
+
+  private class ArrayElement(
+    val contents: Array[String]
+  ) extends Element
+
+  private class LineElements(s: String) extends Element {
+    val contents = Array(s)
+    override def width = s.length
+    override def height = 1
+  }
+
+  private class UniformElement(
+    ch: Char,
+    override val width: Int,
+    override val height: Int
+  ) extends Element {
+    private val line = ch.toString * width
+    def contents = Array.fill(height)(line)
+  }
+
   def elem(contents: Array[String]): Element =
     new ArrayElement(contents)
 
