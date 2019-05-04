@@ -40,7 +40,11 @@ abstract class Element {
       val left = elem(' ', (w - width) / 2, height)
       val right = elem(' ', w - width - left.width , height)
       left beside this beside right
-    }
+    // ensuring is from chapter 14 page 262
+    // asserts that the argument w is less than or equal to the
+    // width of of the element returned
+    // if false then throws assertion error
+    } ensuring (w <= _.width)
 
   // match heights of Elements
   def heighten(h: Int): Element =
